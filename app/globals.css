@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-ink: #0d0b0c;
+  --color-coal: #111111;
+  --color-oxblood: #4c0606;
+  --color-brand: #660909;
+  --color-brand-edge: #822e30;
+  --color-input: #55261c;
+  --color-ivory: #f2efea;
+  --color-gold: #d9c984;
+
+  --font-sans: var(--font-fira-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fira-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-din: var(--font-fira-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: auto;
+  background: var(--color-ink);
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-25%);
+  }
+}
+
+.marquee-track {
+  animation: 34s linear infinite marquee;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-dot {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  60% {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+}
+
+.scroll-dot {
+  animation: 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite scroll-dot;
+}
+
+.cta-red {
+  background-color: var(--color-brand);
+  background-image: radial-gradient(105% 75% at 50% 137%, #eb6d6d 0%, #66090900 62%),
+    radial-gradient(90% 84% at 50% -22%, #4d0202 14%, #66090900 58%);
+  background-size: 100% 100%;
+  transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s;
+}
+
+.cta-red:hover {
+  background-size: 150% 165%;
+  border-color: #b6595b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px -6px #eb6d6d80, inset 0 0 0 1px #eb6d6d2e;
+}
+
+.cta-red:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px -6px #eb6d6d80;
+}
+
+.btn-outline {
+  isolation: isolate;
+  transition: color 0.3s, border-color 0.3s, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline:after {
+  content: "";
+  z-index: -1;
+  transform-origin: bottom;
+  background: currentColor;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: absolute;
+  inset: 0;
+  transform: scaleY(0);
+}
+
+.btn-outline:hover:after {
+  transform: scaleY(1);
+}
+
+.btn-outline:hover {
+  transform: translateY(-1px);
+}
+
+.btn-outline-brand:hover {
+  color: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+.btn-outline-brand:hover .btn-label {
+  color: #fff;
+}
+
+.btn-outline-ivory:hover {
+  color: var(--color-ivory);
+}
+
+.btn-outline-ivory:hover .btn-label {
+  color: var(--color-oxblood);
+}
+
+.btn-round {
+  transition: background-color 0.3s, border-color 0.3s, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s;
+}
+
+.btn-round:hover {
+  transform: scale(1.08);
+}
+
+.btn-round:active {
+  transform: scale(0.96);
+}
+
+.link-underline {
+  transition: color 0.25s;
+  position: relative;
+}
+
+.link-underline:after {
+  content: "";
+  transform-origin: 0;
+  background: currentColor;
+  width: 100%;
+  height: 1px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transform: scaleX(0);
+}
+
+.link-underline:hover:after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-red,
+  .btn-outline,
+  .btn-outline:after,
+  .btn-round,
+  .link-underline,
+  .link-underline:after,
+  .marquee-track,
+  .scroll-dot {
+    transition-duration: 0.01ms;
+    animation: none;
+  }
+
+  .cta-red:hover,
+  .btn-outline:hover,
+  .btn-round:hover {
+    transform: none;
+  }
+}
