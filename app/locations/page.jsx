@@ -42,7 +42,7 @@ export default function LocationsPage() {
         <div className="mx-auto flex max-w-[1168px] flex-col gap-8 lg:gap-12">
           <Reveal className="flex flex-col items-start gap-4">
             <span className="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/[0.07] px-3 py-1 font-sans text-[11px] font-medium uppercase leading-4 tracking-[0.2em] text-white/80">
-              Portfolio
+              LOCATIONS REVEALING SOON
             </span>
             <h2 className="font-display text-[28px] font-light leading-9 text-white lg:text-[40px] lg:leading-[48px]">
               FIND THE RIGHT LANDMARK.
@@ -53,7 +53,7 @@ export default function LocationsPage() {
             <div className="flex w-full flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
               <GroupFilter active={group} onChange={setGroup} />
               <AvailabilityFilter active={availability} onChange={setAvailability} />
-              <p className="font-sans text-sm leading-5 text-white/50 sm:ml-auto">
+              <p className="font-sans text-sm leading-5 text-white/50 sm:ml-auto hidden sm:block">
                 {filtered.length} {filtered.length === 1 ? "location" : "locations"}
               </p>
             </div>

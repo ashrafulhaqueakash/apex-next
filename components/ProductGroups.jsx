@@ -1,6 +1,7 @@
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Badge";
 import { CTAButton } from "@/components/ui/Button";
+import { ArrowRightIcon } from "@/components/ui/Icons";
 
 const HOME_GROUP_CARDS = [
   {
@@ -52,7 +53,60 @@ const DETAILED_GROUP_CARDS = [
 
 const ROUNDED_TOP = "rounded-t-[32px] lg:rounded-t-[40px]";
 
-function GroupCard({ id, name, cta, headline, body, surfaces, image }) {
+function GroupCard({ id, name, cta, headline, body, surfaces, image, imageFirst, index }) {
+  if (imageFirst) {
+    return (
+      <div
+        id={id}
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#e5e0d8] bg-[#fbfaf8] shadow-[0_8px_28px_rgba(13,11,12,0.07)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(13,11,12,0.14)]"
+      >
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-coal">
+          <img
+            src={image}
+            alt=""
+            className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent" />
+        </div>
+        <div className="flex flex-1 flex-col p-5 lg:p-6">
+          <div className="flex items-center justify-between border-b border-[#e5e0d8] pb-3">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#f5e9e7] px-3 py-1.5 font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-brand">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+              {name}
+            </span>
+            <span className="rounded-full bg-[#f0ede7] px-2.5 py-1 font-sans text-[10px] font-medium tabular-nums tracking-[0.12em] text-coal/60">
+              0{index + 1}<span className="px-1 text-coal/30">/</span>03
+            </span>
+          </div>
+          <div className="flex flex-1 flex-col gap-3 pt-4">
+            <h3 className="min-h-[3rem] font-display text-lg font-normal leading-6 text-ink lg:text-xl lg:leading-7">{headline}</h3>
+            <p className="font-sans text-sm leading-[21px] text-coal/70">{body}</p>
+            <div className="border-t border-[#e5e0d8] pt-3">
+              <p className="mb-2 font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-coal/45">Available surfaces</p>
+              <div className="flex flex-wrap gap-1.5">
+                {surfaces.map((surface) => (
+                  <span
+                    key={surface}
+                    className="rounded-full border border-[#e8e2d9] bg-white px-2.5 py-1 font-sans text-[10px] leading-4 text-coal/70 shadow-[0_1px_2px_rgba(13,11,12,0.04)]"
+                  >
+                    {surface}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <CTAButton
+            href={`/what-we-do#${id}`}
+            className="mt-5 flex w-full items-center justify-between !rounded-lg !border-transparent !px-4 !py-3 !text-xs !font-semibold tracking-[0.12em] shadow-[0_5px_14px_rgba(102,9,9,0.2)]"
+          >
+            {cta}
+            <ArrowRightIcon className="h-4 w-4 text-white transition-transform duration-300 group-hover:translate-x-1" />
+          </CTAButton>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div id={id} className="group relative h-[360px] overflow-hidden rounded-xl lg:h-[460px]">
       <img
@@ -126,9 +180,9 @@ export function ProductGroups({
           )}
         </Reveal>
         <StaggerGroup className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
-          {groupCards.map((card) => (
+          {groupCards.map((card, index) => (
             <StaggerItem key={card.id}>
-              <GroupCard {...card} />
+              <GroupCard {...card} imageFirst={variant === "home"} index={index} />
             </StaggerItem>
           ))}
         </StaggerGroup>

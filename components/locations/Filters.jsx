@@ -3,7 +3,7 @@
 import { locationGroups, availabilityFilters } from "@/lib/locations";
 
 const GROUP_OPTIONS = [
-  { id: "all", name: "ALL", blurb: "A curated portfolio of Architectural Media opportunities across Dubai." },
+  { id: "all", name: "ALL", blurb: "A curated portfolio of extraordinary Architectural Media locations across Dubai. Our first landmark locations will be unveiled soon. Each carefully selected for its architecture, visibility, scale and ability to create extraordinary brand presence. Be among the first to discover them." },
   ...Object.entries(locationGroups).map(([id, group]) => ({ id, ...group })),
 ];
 
