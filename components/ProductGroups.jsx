@@ -16,7 +16,7 @@ const HOME_GROUP_CARDS = [
     id: "icon",
     name: "APEX ICON",
     cta: "DISCOVER ICON",
-    headline: "TURN ARCHITECTURE INTO MEDIA.",
+    headline: "TURN CONSTRUCTION INTO ICONIC SHOWCASES.",
     body: "ICON transforms existing buildings into temporary brand landmarks. Not advertising placed on architecture. Architecture transformed by the brand.",
     surfaces: ["Full building wraps", "Façade branding", "Architectural integration", "Spectaculars", "3D executions"],
     image: "/images/client-previews/icon-card.jpg",
@@ -54,7 +54,7 @@ const ROUNDED_TOP = "rounded-t-[32px] lg:rounded-t-[40px]";
 
 function GroupCard({ id, name, cta, headline, body, surfaces, image }) {
   return (
-    <div id={id} className="group relative h-[460px] overflow-hidden rounded-xl lg:h-[560px]">
+    <div id={id} className="group relative h-[360px] overflow-hidden rounded-xl lg:h-[460px]">
       <img
         src={image}
         alt=""

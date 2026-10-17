@@ -7,7 +7,7 @@ const FOOTER_GROUPS = [
     title: "Contact",
     items: [
       { label: "Dubai, United Arab Emirates" },
-      { label: "yordi@theapexmediagroup.com", href: "mailto:yordi@theapexmediagroup.com" },
+      { label: "info@theapexmediagroup.com", href: "mailto:info@theapexmediagroup.com" },
       { label: "+971585227385", href: "tel:+971585227385" },
     ],
   },

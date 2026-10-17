@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Badge";
 import { CTAButton } from "@/components/ui/Button";
 
-const STEP_IMAGES = ["/images/process/bg-1.webp", "/images/process/bg-2.webp", "/images/process/bg-3.webp", "/images/process/bg-4.webp"];
+const STEP_IMAGES = ["/images/process/bg-1.webp", "/images/process/bg-2.webp", "/images/process/bg-3.webp", "/images/process/bg-5.jpg", "/images/process/bg-1.webp", "/images/process/bg-2.webp", "/images/process/bg-3.webp", "/images/process/bg-8.jpg"];
 
 const STEPS = [
   { num: "01", title: "DISCOVER", desc: "Find the opportunity. We identify architecture with exceptional media potential." },
@@ -18,8 +18,6 @@ const STEPS = [
   { num: "08", title: "REMOVE AND REPURPOSE", desc: "Complete the lifecycle. Professional removal followed by responsible repurposing of campaign materials wherever possible." },
 ].map((step, i) => ({ ...step, img: STEP_IMAGES[i % STEP_IMAGES.length] }));
 
-const STEP_WIDTH = 273;
-
 function StepCard({ num, title, desc, img, active, onSelect }) {
   return (
     <button
@@ -27,7 +25,8 @@ function StepCard({ num, title, desc, img, active, onSelect }) {
       onClick={onSelect}
       aria-label={`Step ${num}: ${title}`}
       aria-pressed={active}
-      className="flex w-[241px] shrink-0 cursor-pointer flex-col gap-[15px] text-left"
+      data-step-card
+      className="grid w-[241px] shrink-0 cursor-pointer grid-rows-[50px_19px_85px_262px] gap-[15px] text-left"
     >
       <div
         className={`relative z-10 flex h-[50px] w-[50px] items-center justify-center rounded-[10px] transition-colors duration-300 ${
@@ -43,7 +42,7 @@ function StepCard({ num, title, desc, img, active, onSelect }) {
         </span>
       </div>
       <span className="font-display text-base leading-[19px] text-ink">{title}</span>
-      <p className="font-sans text-sm leading-[17px] text-[#626262]">{desc}</p>
+      <p className="overflow-hidden font-sans text-sm leading-[17px] text-[#626262]">{desc}</p>
       <img src={img} alt="" className="h-[262px] w-full rounded-lg object-cover" />
     </button>
   );
@@ -53,13 +52,21 @@ export function ProcessCarousel() {
   const trackRef = useRef(null);
   const [active, setActive] = useState(0);
 
-  const scrollBySteps = (dir) => {
-    trackRef.current?.scrollBy({ left: dir * STEP_WIDTH, behavior: "smooth" });
-  };
-
   const selectStep = (index) => {
-    setActive(index);
-    trackRef.current?.scrollTo({ left: index * STEP_WIDTH, behavior: "smooth" });
+    const nextIndex = Math.max(0, Math.min(STEPS.length - 1, index));
+    setActive(nextIndex);
+
+    const track = trackRef.current;
+    const cards = track?.querySelectorAll("[data-step-card]");
+    const firstCard = cards?.[0];
+    const selectedCard = cards?.[nextIndex];
+
+    if (track && firstCard && selectedCard) {
+      track.scrollTo({
+        left: selectedCard.offsetLeft - firstCard.offsetLeft,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -80,11 +87,11 @@ export function ProcessCarousel() {
         <div className="flex flex-col gap-8">
           <div
             ref={trackRef}
-            className="relative flex gap-8 overflow-x-auto pb-2 pl-[var(--gutter)] pr-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="relative flex gap-3 overflow-x-auto pb-2 pl-[var(--gutter)] pr-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:gap-8"
           >
             <div
-              className="pointer-events-none absolute top-[25px] h-px bg-[#e7e7e7]"
-              style={{ left: "calc(var(--gutter) + 25px)", width: (STEPS.length - 1) * STEP_WIDTH }}
+              className="pointer-events-none absolute top-[25px] h-px w-[1771px] bg-[#e7e7e7] lg:w-[1911px]"
+              style={{ left: "calc(var(--gutter) + 25px)" }}
             />
             {STEPS.map((step, i) => (
               <StepCard key={step.num} {...step} active={i === active} onSelect={() => selectStep(i)} />
@@ -94,7 +101,7 @@ export function ProcessCarousel() {
           <div className="flex gap-3 px-[var(--gutter)]">
             <button
               type="button"
-              onClick={() => scrollBySteps(-1)}
+              onClick={() => selectStep(active - 1)}
               aria-label="Previous step"
               className="btn-round flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#111111]/20 hover:border-[#111111]/50"
             >
@@ -104,7 +111,7 @@ export function ProcessCarousel() {
             </button>
             <button
               type="button"
-              onClick={() => scrollBySteps(1)}
+              onClick={() => selectStep(active + 1)}
               aria-label="Next step"
               className="btn-round flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#111111]/20 hover:border-[#111111]/50"
             >

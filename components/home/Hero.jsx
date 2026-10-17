@@ -187,7 +187,7 @@ export function Hero() {
             >
               <div className="flex max-w-[900px] flex-col gap-2 text-center lg:max-w-[820px] lg:items-start lg:text-left">
                 <h1 className="font-sans text-lg font-light leading-snug tracking-[0.5px] text-ivory sm:text-xl lg:text-[26px]">
-                  OWN A LANDMARK. NOT A PANEL.
+                  OWN A LANDMARK.
                 </h1>
                 <p className="font-sans text-sm font-light leading-5 tracking-[0.2px] text-ivory/85 sm:text-base sm:leading-6">
                   The Apex Media Group transforms Dubai&rsquo;s architecture into extraordinary media opportunities for brands and property partners.
@@ -200,7 +200,6 @@ export function Hero() {
                 </p>
               </div>
               <div className="flex shrink-0 flex-col gap-3">
-                <CTAButton href="/locations" className="!px-8">EXPLORE LOCATIONS</CTAButton>
                 <CTAButton className="!px-8">PARTNER WITH APEX</CTAButton>
               </div>
             </div>

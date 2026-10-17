@@ -55,9 +55,6 @@ function TeamCard({ name, role, email, photo, ground, bio, index }) {
           alt={name}
           className="h-full w-full object-contain"
         />
-        <span className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/70 bg-white/75 px-3 py-1 font-sans text-[10px] font-medium uppercase tracking-[0.16em] text-ink backdrop-blur-sm">
-          Leader 0{index + 1}
-        </span>
       </div>
       <div className="flex flex-1 flex-col gap-5 p-5 sm:p-6 lg:p-7">
         <div className="flex flex-col gap-4 border-b border-ink/10 pb-5 sm:flex-row sm:items-end sm:justify-between">

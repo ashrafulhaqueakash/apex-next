@@ -119,7 +119,6 @@ export function PropertyOwnerSplit() {
     <>
       <section className="bg-coal">
         <Reveal className="flex flex-col gap-4 p-4 lg:mx-auto lg:w-[1168px] lg:px-0 lg:pb-6 lg:pt-10">
-          <Eyebrow align="left">02 Who we are</Eyebrow>
           <h2 className="font-display text-xl font-light leading-7 text-white lg:text-[40px] lg:leading-[56px]">
             THE CITY IS THE MEDIUM.
           </h2>

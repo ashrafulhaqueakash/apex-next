@@ -102,7 +102,7 @@ function ExampleInfo() {
 
 export function FeaturedLocations() {
   return (
-    <section className="relative overflow-hidden bg-coal px-4 py-6 lg:p-16">
+    <section className="!hidden relative overflow-hidden bg-coal px-4 py-6 lg:p-16">
       <div className="mx-auto flex flex-col gap-4 lg:w-[1152px] lg:gap-10">
         <Reveal className="flex flex-col gap-4">
           <Eyebrow align="left">Portfolio</Eyebrow>

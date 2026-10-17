@@ -51,10 +51,7 @@ export function WinWin() {
             ONE LANDMARK. VALUE FOR EVERYONE.
           </h2>
           <p className="max-w-[600px] font-sans text-base leading-6 text-white/55 lg:text-lg lg:leading-7">
-            The best media does not just take from the city.
-          </p>
-          <p className="font-sans text-sm font-medium leading-5 tracking-[0.2px] text-ivory sm:text-base sm:leading-6">
-            It gives something back.
+            The best media does not just take from the city. It gives something back.
           </p>
           <p className="max-w-[600px] font-sans text-base leading-6 text-white/55 lg:text-lg lg:leading-7">
             Apex creates Architectural Media designed to generate commercial value, extraordinary brand impact and a better urban experience, all from one location.

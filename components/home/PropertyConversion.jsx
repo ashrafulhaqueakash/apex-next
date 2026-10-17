@@ -7,7 +7,7 @@ export function PropertyConversion() {
       <div className="pointer-events-none absolute -right-28 -top-36 h-[420px] w-[420px] rounded-full border border-ink/[0.06] lg:-right-16 lg:-top-52 lg:h-[600px] lg:w-[600px]" />
       <div className="relative mx-auto grid max-w-[1168px] gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
         <Reveal className="flex flex-col items-start gap-4">
-          <Eyebrow tone="dark" align="left">08 Property Conversion</Eyebrow>
+          <Eyebrow tone="dark" align="left">Property Conversion</Eyebrow>
           <h2 className="max-w-[720px] font-display text-[28px] font-light leading-9 text-ink lg:text-[40px] lg:leading-[48px]">
             YOUR BUILDING IS ALREADY VISIBLE.
             <span className="block text-brand">MAKE THAT VISIBILITY WORK.</span>

@@ -7,9 +7,6 @@ export function Closing() {
     <section className="bg-ivory px-4 py-14 lg:px-14 lg:py-20">
       <Reveal className="mx-auto grid max-w-[1168px] gap-6 border-y border-ink/15 py-7 sm:grid-cols-[1fr_auto] sm:items-center lg:gap-12 lg:py-9">
         <div className="flex flex-col items-start gap-4">
-          <Eyebrow tone="dark" align="left" className="border-brand/20 bg-brand/[0.05] text-brand">
-            Closing
-          </Eyebrow>
           <h2 className="max-w-[780px] font-display text-[28px] font-light leading-9 text-ink lg:text-[40px] lg:leading-[48px]">
             ONE BUILDING.
             <span className="block text-brand">A COMPLETELY DIFFERENT OPPORTUNITY.</span>
