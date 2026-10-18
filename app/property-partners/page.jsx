@@ -34,7 +34,7 @@ export default function PropertyPartnersPage() {
   return (
     <div className="w-full">
       <PageHero
-        image="/images/home/owners-card.webp"
+        image="/images/home/property-patners.webp"
         eyebrow="FOR PROPERTY PARTNERS"
         title="TURN YOUR BUILDING INTO AN ASSET."
         lead="For developers, building owners and asset managers with visibility that is not yet working commercially. Apex turns façades, developments and rooftops into professionally managed Architectural Media assets."

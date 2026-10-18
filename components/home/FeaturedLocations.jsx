@@ -88,7 +88,7 @@ function ExampleInfo() {
           ))}
         </div>
         <div className="flex w-full flex-col gap-6 rounded-lg bg-black p-5 lg:w-[502px]">
-          <ContactRow icon={<PinIcon />}>Dubai, United Arab Emirates</ContactRow>
+          <ContactRow icon={<PinIcon />}>MAKATEB 2 - 505 - Dubai Production City - Dubai - United Arab Emirates</ContactRow>
           <ContactRow icon={<PhoneIcon />}>+971 12 345 6789</ContactRow>
         </div>
       </div>

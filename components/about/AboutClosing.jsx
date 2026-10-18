@@ -7,7 +7,6 @@ export function AboutClosing() {
     <section className="bg-ink px-4 py-12 lg:px-14 lg:py-16">
       <Reveal className="mx-auto grid max-w-[1168px] gap-6 border-y border-white/15 py-7 sm:grid-cols-[1fr_auto] sm:items-center lg:gap-12 lg:py-9">
         <div className="flex flex-col items-start gap-4">
-          <Eyebrow align="left">Closing</Eyebrow>
           <h2 className="max-w-[760px] font-display text-[28px] font-light leading-9 text-white lg:text-[40px] lg:leading-[48px]">
             THE NEXT LANDMARK
             <span className="block text-gold">STARTS WITH A BUILDING.</span>

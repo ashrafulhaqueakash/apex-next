@@ -180,3 +180,30 @@ body {
     transform: none;
   }
 }
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  body,
+  html {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  article {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background: #ffffff !important;
+    border-color: #dddddd !important;
+    color: #222222 !important;
+  }
+
+  h1, h2, h3, p, span {
+    color: #111111 !important;
+  }
+}
+

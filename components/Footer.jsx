@@ -6,7 +6,7 @@ const FOOTER_GROUPS = [
   {
     title: "Contact",
     items: [
-      { label: "Dubai, United Arab Emirates" },
+      { label: "MAKATEB 2 - 505 - Dubai Production City - Dubai - United Arab Emirates" },
       { label: "info@theapexmediagroup.com", href: "mailto:info@theapexmediagroup.com" },
       { label: "+971585227385", href: "tel:+971585227385" },
     ],
@@ -31,8 +31,8 @@ const FOOTER_GROUPS = [
   {
     title: "Legal",
     items: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms & Conditions", href: "#" },
+      { label: "Privacy Policy", to: "/privacy" },
+      { label: "Terms & Conditions", to: "/terms" },
     ],
   },
 ];

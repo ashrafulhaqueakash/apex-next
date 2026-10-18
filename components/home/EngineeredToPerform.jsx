@@ -34,7 +34,7 @@ export function EngineeredToPerform() {
             ))}
           </StaggerGroup>
           <Reveal className="h-[160px] w-full overflow-hidden rounded-lg lg:h-[252px] lg:w-[551px]">
-            <img src="/images/locations/photo-b.webp" alt="" className="h-full w-full object-cover" />
+            <img src="/images/advertisers/hero-bg.jpg" alt="" className="h-full w-full object-cover" />
           </Reveal>
         </div>
       </div>
