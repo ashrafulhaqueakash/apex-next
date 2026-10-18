@@ -3,12 +3,12 @@ import { Eyebrow } from "@/components/ui/Badge";
 import { CheckIcon } from "@/components/ui/Icons";
 
 const POINTS = [
-  "STRUCTURAL ENGINEERING — Building specific load and wind analysis.",
-  "PURPOSE BUILT SYSTEMS — Engineered specifically for each façade and location.",
-  "MATERIAL PERFORMANCE — Selected for safety, durability and environmental conditions.",
-  "SPECIALIST INSTALLATION — Planned and executed around building operations.",
-  "PERMITS AND COMPLIANCE — Required approvals integrated into the process.",
-  "PROFESSIONAL REMOVAL — Controlled removal at the end of every campaign.",
+  "STRUCTURAL ENGINEERING : Building specific load and wind analysis.",
+  "PURPOSE BUILT SYSTEMS : Engineered specifically for each façade and location.",
+  "MATERIAL PERFORMANCE : Selected for safety, durability and environmental conditions.",
+  "SPECIALIST INSTALLATION : Planned and executed around building operations.",
+  "PERMITS AND COMPLIANCE : Required approvals integrated into the process.",
+  "PROFESSIONAL REMOVAL : Controlled removal at the end of every campaign.",
 ];
 
 export function EngineeredToPerform() {

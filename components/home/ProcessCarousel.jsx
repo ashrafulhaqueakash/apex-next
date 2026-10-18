@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Badge";
 import { CTAButton } from "@/components/ui/Button";
 
-const STEP_IMAGES = ["/images/process/bg-1.jpg", "/images/process/bg-2.jpg", "/images/process/bg-9.webp", "/images/advertisers/advertisers.webp", "/images/process/bg-5.webp", "/images/process/bg-6.jpg", "/images/process/bg-2.webp", "/images/process/bg-8.jpg"];
+const STEP_IMAGES = ["/images/process/bg-1.jpg", "/images/process/bg-2.jpg", "/images/process/bg-9.webp", "/images/process/bg-4.jpg", "/images/process/bg-5.webp", "/images/process/bg-6.jpg", "/images/process/bg-2.webp", "/images/process/bg-8.jpg"];
 
 const STEPS = [
   { num: "01", title: "DISCOVER", desc: "Find the opportunity. We identify architecture with exceptional media potential." },
