@@ -9,7 +9,7 @@ const HOME_GROUP_CARDS = [
     name: "APEX BUILD",
     cta: "DISCOVER BUILD",
     headline: "TURN CONSTRUCTION INTO CULTURE.",
-    body: "Construction does not have to disappear behind a screen. BUILD transforms developments under construction into monumental brand experiences and full scale developer showcases.",
+    body: "Construction does not have to disappear behind a screen. BUILD transforms developments under construction into brand experiences and full scale developer showcases.",
     surfaces: ["Full façade mesh", "Construction wraps", "Hoarding", "Developer visualisation", "Brand partnerships"],
     image: "/images/client-previews/build.jpg",
   },

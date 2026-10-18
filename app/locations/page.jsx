@@ -63,7 +63,7 @@ export default function LocationsPage() {
           </Reveal>
 
           {filtered.length > 0 ? (
-            <LocationGrid key={`${group}-${availability}`} locations={filtered} />
+            <LocationGrid key={`${group}-${availability}`} locations={filtered} imageFirst showGroupBadge={false} />
           ) : (
             <Reveal className="flex flex-col items-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-14 text-center">
               <p className="font-display text-xl font-light leading-7 text-white lg:text-2xl">

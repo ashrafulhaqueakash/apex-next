@@ -4,10 +4,10 @@ import { OutlineBadge, SolidBadge } from "@/components/ui/Badge";
 import { ArrowRightIcon } from "@/components/ui/Icons";
 import { locationGroups } from "@/lib/locations";
 
-function LocationCard({ location, imageFirst }) {
+function LocationCard({ location, imageFirst, showGroupBadge = true }) {
   const badges = (
-    <div className="flex items-start justify-between gap-3">
-      <OutlineBadge>{locationGroups[location.group]?.name}</OutlineBadge>
+    <div className={`flex items-start gap-3 ${showGroupBadge ? "justify-between" : "justify-end"}`}>
+      {showGroupBadge && <OutlineBadge>{locationGroups[location.group]?.name}</OutlineBadge>}
       <SolidBadge>{location.status}</SolidBadge>
     </div>
   );
@@ -76,12 +76,12 @@ function LocationCard({ location, imageFirst }) {
   );
 }
 
-export function LocationGrid({ locations, className = "", imageFirst = false }) {
+export function LocationGrid({ locations, className = "", imageFirst = false, showGroupBadge = true }) {
   return (
     <StaggerGroup className={`grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6 ${className}`} amount={0.1}>
       {locations.map((location) => (
         <StaggerItem key={location.slug}>
-          <LocationCard location={location} imageFirst={imageFirst} />
+          <LocationCard location={location} imageFirst={imageFirst} showGroupBadge={showGroupBadge} />
         </StaggerItem>
       ))}
     </StaggerGroup>
