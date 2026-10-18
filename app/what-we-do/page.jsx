@@ -23,7 +23,7 @@ export default function WhatWeDoPage() {
       <ReframeCards />
       <ProductGroups
         rounded={false}
-        variant="detail"
+        variant="home"
         eyebrow="THREE WAYS TO OWN THE CITY"
         title="BUILD. ICON. ABOVE."
         lead="Three product groups. Three different ways to turn architecture into media."
