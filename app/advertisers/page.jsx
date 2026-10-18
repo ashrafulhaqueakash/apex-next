@@ -45,7 +45,7 @@ export default function AdvertisersPage() {
   return (
     <div className="w-full">
       <PageHero
-        image="/images/advertisers/advertisers.webp"
+        image="/images/advertisers/hero-bg.jpg"
         eyebrow="FOR ADVERTISERS"
         title={
           <>
