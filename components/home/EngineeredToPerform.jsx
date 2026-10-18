@@ -3,12 +3,30 @@ import { Eyebrow } from "@/components/ui/Badge";
 import { CheckIcon } from "@/components/ui/Icons";
 
 const POINTS = [
-  "STRUCTURAL ENGINEERING : Building specific load and wind analysis.",
-  "PURPOSE BUILT SYSTEMS : Engineered specifically for each façade and location.",
-  "MATERIAL PERFORMANCE : Selected for safety, durability and environmental conditions.",
-  "SPECIALIST INSTALLATION : Planned and executed around building operations.",
-  "PERMITS AND COMPLIANCE : Required approvals integrated into the process.",
-  "PROFESSIONAL REMOVAL : Controlled removal at the end of every campaign.",
+  {
+    title: "Structural engineering",
+    description: "Building-specific load and wind analysis.",
+  },
+  {
+    title: "Purpose-built systems",
+    description: "Engineered for each façade and location.",
+  },
+  {
+    title: "Material performance",
+    description: "Selected for safety, durability and environmental conditions.",
+  },
+  {
+    title: "Specialist installation",
+    description: "Planned around building operations.",
+  },
+  {
+    title: "Permits and compliance",
+    description: "Required approvals integrated into the process.",
+  },
+  {
+    title: "Professional removal",
+    description: "Controlled removal at the end of every campaign.",
+  },
 ];
 
 export function EngineeredToPerform() {
@@ -25,11 +43,24 @@ export function EngineeredToPerform() {
           </p>
         </Reveal>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
-          <StaggerGroup className="flex flex-col gap-[23px] lg:w-[577px] lg:shrink-0 lg:py-6">
-            {POINTS.map((point) => (
-              <StaggerItem key={point} className="flex items-center gap-2">
-                <CheckIcon stroke="#4c0606" className="h-[18px] w-[18px]" />
-                <span className="font-sans text-base leading-[19px] text-coal">{point}</span>
+          <StaggerGroup className="flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[0_16px_48px_rgba(13,11,12,0.06)] lg:w-[577px] lg:shrink-0">
+            {POINTS.map((point, index) => (
+              <StaggerItem
+                key={point.title}
+                className="group flex items-center gap-4 border-b border-ink/[0.08] px-4 py-4 transition-colors last:border-b-0 hover:bg-[#faf8f5] lg:px-5"
+              >
+                <span className="w-7 shrink-0 font-sans text-[11px] font-medium tabular-nums tracking-[0.12em] text-brand/65">
+                  0{index + 1}
+                </span>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand transition-colors group-hover:bg-oxblood">
+                  <CheckIcon className="h-4 w-4" />
+                </span>
+                <span className="flex min-w-0 flex-col gap-1">
+                  <span className="font-sans text-sm font-semibold uppercase tracking-[0.08em] text-ink">
+                    {point.title}
+                  </span>
+                  <span className="font-sans text-sm leading-5 text-coal/65">{point.description}</span>
+                </span>
               </StaggerItem>
             ))}
           </StaggerGroup>
