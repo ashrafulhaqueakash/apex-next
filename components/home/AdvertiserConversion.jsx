@@ -7,7 +7,6 @@ export function AdvertiserConversion() {
     <section className="bg-ink px-4 pb-14 lg:px-14 lg:pb-20">
       <div className="mx-auto flex max-w-[1168px] flex-col gap-8 lg:gap-10">
         <Reveal className="flex flex-col items-start gap-4">
-          <Eyebrow align="left">Advertiser Conversion</Eyebrow>
           <h2 className="max-w-[820px] font-display text-[28px] font-light leading-9 text-white lg:text-[40px] lg:leading-[48px]">
             CAN’T FIND THE LOCATION
             <span className="block">YOU’RE LOOKING FOR?</span>
