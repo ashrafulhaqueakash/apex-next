@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { HeroActions } from "@/components/advertisers/HeroActions";
 import { ItemsGrid } from "@/components/ItemsGrid";
-import { ProductGroups } from "@/components/ProductGroups";
+import { LocationsSection } from "@/components/home/LocationsSection";
 import {
   AdvertiserClosing,
   AdvertiserOpportunities,
@@ -68,19 +67,7 @@ export default function AdvertisersPage() {
 
       <AdvertiserTurnkeyDelivery />
 
-      <ProductGroups
-        id="groups"
-        tone="dark"
-        variant="detail"
-        eyebrow="THREE WAYS IN"
-        title="BUILD. ICON. ABOVE."
-        lead="Choose the environment that gives your brand the strongest relationship with the city."
-        footer={
-          <Link href="/what-we-do" className="link-underline font-sans text-base font-medium text-white">
-            DISCOVER WHAT WE DO
-          </Link>
-        }
-      />
+      <LocationsSection />
 
       <AdvertiserOpportunities />
       <BespokeOpportunities />

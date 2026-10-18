@@ -38,7 +38,7 @@ export function AdvertiserOpportunities() {
           </p>
         </Reveal>
 
-        <LocationGrid locations={locations.slice(0, 3)} />
+        <LocationGrid locations={locations.slice(0, 3)} imageFirst />
 
         <Reveal className="flex justify-center">
           <CTAButton href="/locations" className="!px-8">
