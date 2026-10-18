@@ -24,8 +24,8 @@ const FOOTER_GROUPS = [
   {
     title: "Follow",
     items: [
-      { label: "LinkedIn", icon: "linkedin" },
-      { label: "Instagram", icon: "instagram" },
+      { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/company/the-apex-media-group-dubai", external: true },
+      { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/theapexmediagroup_", external: true },
     ],
   },
   {
@@ -71,6 +71,8 @@ function FooterColumn({ title, items }) {
               <a
                 key={item.label}
                 href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
                 className="link-underline flex w-fit min-w-0 max-w-full items-center gap-2 font-display text-sm font-medium leading-[17px] text-ivory hover:text-white"
               >
                 {content}
