@@ -6,7 +6,7 @@ import { locations } from "@/lib/locations";
 
 export function LocationsSection() {
   return (
-    <section className="bg-ink px-4 pb-16 lg:px-14 lg:pb-24">
+    <section className="bg-ink px-4 py-16 lg:px-14 lg:py-24">
       <div className="mx-auto flex max-w-[1168px] flex-col gap-9 lg:gap-12">
         <Reveal className="flex flex-col gap-5">
           <Eyebrow align="left">LOCATIONS REVEALING SOON</Eyebrow>
@@ -21,10 +21,10 @@ export function LocationsSection() {
             </p>
           </div>
         </Reveal>
+        {/* Temporary Hide */}
+        {/* <LocationGrid locations={locations.slice(0, 3)} imageFirst /> */}
 
-        <LocationGrid locations={locations.slice(0, 3)} imageFirst />
-
-        <Reveal className="flex justify-center">
+        <Reveal className="flex justify-center !hidden">
           <CTAButton href="/locations" className="!px-8">
             EXPLORE ALL LOCATIONS
           </CTAButton>
