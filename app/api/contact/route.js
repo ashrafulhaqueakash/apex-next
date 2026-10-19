@@ -58,8 +58,8 @@ export async function POST(request) {
   const safeMessage = message.trim();
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
+    host: "smtp.office365.com",
+    port: 587,
     secure: true,
     auth: {
       user: gmailUser,
