@@ -3,7 +3,6 @@ import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 
-const RECIPIENT = process.env.RECIPIENT;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(value) {
@@ -42,6 +41,7 @@ export async function POST(request) {
 
   const gmailUser = process.env.GMAIL_USER;
   const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+  const RECIPIENT = process.env.RECIPIENT;
 
   if (!gmailUser || !gmailAppPassword) {
     console.error("Contact form: missing GMAIL_USER or GMAIL_APP_PASSWORD env vars.");
