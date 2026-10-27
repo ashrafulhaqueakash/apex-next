@@ -34,21 +34,21 @@ export default function LocationsPage() {
       <PageHero
         image="/images/locations/photo-e.webp"
         eyebrow="LOCATIONS"
-        title="A PORTFOLIO OF LANDMARKS."
-        lead="Not a network of panels. A curated collection of Architectural Media opportunities across Dubai. Every location is selected for its architecture, visibility, scale and ability to create extraordinary brand presence."
+        title="DISCOVER VISION TOWER."
+        lead="Explore our published façade opportunity in Business Bay, Dubai. More locations will be revealed soon."
       />
 
       <section className="bg-ink px-4 py-12 lg:px-14 lg:py-20">
         <div className="mx-auto flex max-w-[1168px] flex-col gap-8 lg:gap-12">
           <Reveal className="flex flex-col items-start gap-4">
             <span className="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/[0.07] px-3 py-1 font-sans text-[11px] font-medium uppercase leading-4 tracking-[0.2em] text-white/80">
-              LOCATIONS REVEALING SOON
+              ONE LOCATION NOW LIVE
             </span>
             <h2 className="font-display text-[28px] font-light leading-9 text-white lg:text-[40px] lg:leading-[48px]">
-              FIND THE RIGHT LANDMARK.
+              VISION TOWER, BUSINESS BAY.
             </h2>
             <p className="max-w-[760px] font-sans text-base leading-6 text-white/65 lg:text-lg lg:leading-7">
-              Explore opportunities across developments under construction, completed buildings and rooftops.
+              View the confirmed location and façade measurements. Additional opportunities will be added as they are ready to share.
             </p>
             <div className="flex w-full flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
               <GroupFilter active={group} onChange={setGroup} />

@@ -9,12 +9,6 @@ import { LocationGrid } from "@/components/LocationCard";
 import { ContactSection } from "@/components/ContactSection";
 import { locations, locationGroups, getLocationBySlug } from "@/lib/locations";
 
-const GALLERY_PLACEHOLDERS = [
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85",
-  "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1400&q=85",
-  "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=85",
-];
-
 export function generateStaticParams() {
   return locations.map((location) => ({ slug: location.slug }));
 }
@@ -34,22 +28,32 @@ export default async function LocationDetailPage({ params }) {
   const location = getLocationBySlug(slug);
   if (!location) notFound();
 
+  const inquirySubject = encodeURIComponent(`Availability & rates — ${location.name}`);
+  const inquiryBody = encodeURIComponent(`Hello Apex Media Group,\n\nI'm interested in availability and rates for ${location.name}.\n\n`);
+  const inquiryHref = `mailto:info@theapexmediagroup.com?subject=${inquirySubject}&body=${inquiryBody}`;
   const related = locations.filter((l) => l.slug !== location.slug).slice(0, 3);
-  const gallery = location.gallery?.length ? location.gallery : GALLERY_PLACEHOLDERS;
+  const primarySpecs = location.specs.filter(([label]) => ["Format", "Dimensions", "Media area"].includes(label));
+  const additionalSpecs = location.specs.filter(([label]) => !["Format", "Dimensions", "Media area"].includes(label));
   const locationDetails = [
     { label: "Availability", value: location.status },
     { label: "Location", value: `${location.district}, ${location.city}` },
-    {
-      label: "Visibility",
-      value: `${location.audience.impressions} estimated impressions · ${location.audience.dwell}`,
-    },
+    ...(location.mapUrl ? [{ label: "Map", value: "Open in Google Maps", href: location.mapUrl }] : []),
+    ...(location.address ? [{ label: "Address", value: location.address }] : []),
     { label: "Why this location", value: location.headline },
   ];
 
   return (
     <div className="w-full">
       <section className="relative flex min-h-[100dvh] items-end overflow-hidden bg-ink">
-        <img src={location.hero} alt={location.name} className="absolute inset-0 h-full w-full object-cover" />
+        {location.hero ? (
+          <img src={location.hero} alt={location.name} className="absolute inset-0 h-full w-full object-cover" />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-[#282326] via-[#171515] to-[#090909]">
+            <p className="absolute inset-x-4 bottom-1/3 text-center font-sans text-xs font-medium uppercase tracking-[0.2em] text-white/55">
+              Location photo coming soon
+            </p>
+          </div>
+        )}
         <div className="absolute inset-0 bg-black/35" />
         <div
           className="absolute inset-0"
@@ -93,32 +97,32 @@ export default async function LocationDetailPage({ params }) {
             </Reveal>
 
             <Reveal className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1" delay={0.08}>
-              {[
-                ["Media format", location.specs.find(([label]) => label === "Format")?.[1]],
-                ["Media area", location.specs.find(([label]) => label === "Media area")?.[1]],
-                ["Campaign period", location.specs.find(([label]) => label === "Minimum term")?.[1]],
-              ].map(([label, value]) => (
+              {primarySpecs.map(([label, value]) => (
                 <div key={label} className="rounded-xl border border-ink/10 bg-white p-4 lg:flex lg:items-center lg:justify-between lg:gap-6 lg:px-5">
-                  <h3 className="font-sans text-xs font-medium uppercase tracking-[0.18em] text-brand">{label}</h3>
+                  <h3 className="font-sans text-xs font-medium uppercase tracking-[0.18em] text-brand">
+                    {label === "Format" ? "Media format" : label}
+                  </h3>
                   <p className="mt-1 font-display text-lg font-light leading-6 text-ink lg:mt-0 lg:text-right">{value}</p>
                 </div>
               ))}
             </Reveal>
           </div>
 
-          <Reveal className="grid gap-6 rounded-2xl bg-ink p-5 text-white sm:grid-cols-[1fr_auto] sm:items-center lg:px-7 lg:py-6">
-            <div>
-              <h3 className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-white/60">
-                Additional specifications
-              </h3>
-              <div className="mt-2">
-                <LocationSpecs
-                  specs={location.specs.filter(([label]) => !["Format", "Media area", "Minimum term"].includes(label))}
-                />
+          {additionalSpecs.length > 0 && (
+            <Reveal className="grid gap-6 rounded-2xl bg-ink p-5 text-white sm:grid-cols-[1fr_auto] sm:items-center lg:px-7 lg:py-6">
+              <div>
+                <h3 className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-white/60">
+                  Additional specifications
+                </h3>
+                <div className="mt-2">
+                  <LocationSpecs specs={additionalSpecs} />
+                </div>
               </div>
-            </div>
-            <CTAButton className="w-full !px-8 sm:w-auto">REQUEST THIS LOCATION</CTAButton>
-          </Reveal>
+              <a href={inquiryHref} className="cta-red w-full rounded-[4px] border border-brand-edge/50 px-4 py-2 text-center font-sans text-base font-medium text-white sm:w-auto">
+                REQUEST AVAILABILITY &amp; RATES
+              </a>
+            </Reveal>
+          )}
         </div>
       </section>
 
@@ -127,7 +131,7 @@ export default async function LocationDetailPage({ params }) {
           <Reveal className="flex flex-col items-start gap-3">
             <Eyebrow tone="dark" align="left">Location details</Eyebrow>
             <p className="max-w-[760px] font-sans text-base leading-6 text-coal/70 lg:text-lg lg:leading-7">
-              A closer look at the availability, setting and visibility of this Architectural Media opportunity.
+              Confirmed location and façade measurements for this Architectural Media opportunity.
             </p>
           </Reveal>
           <StaggerGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -137,20 +141,79 @@ export default async function LocationDetailPage({ params }) {
                   <span className="font-sans text-[11px] font-medium uppercase leading-4 tracking-[0.18em] text-brand">
                     {detail.label}
                   </span>
-                  <p className="font-display text-lg font-light leading-6 text-ink lg:text-xl">
-                    {detail.value}
-                  </p>
+                  {detail.href ? (
+                    <a
+                      href={detail.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline w-fit font-display text-lg font-light leading-6 text-brand lg:text-xl"
+                    >
+                      {detail.value}
+                    </a>
+                  ) : (
+                    <p className="font-display text-lg font-light leading-6 text-ink lg:text-xl">
+                      {detail.value}
+                    </p>
+                  )}
                 </article>
               </StaggerItem>
             ))}
           </StaggerGroup>
           <Reveal className="flex flex-col gap-3 border-t border-ink/10 pt-5 sm:flex-row">
-            <CTAButton className="w-full !px-8 sm:w-auto">REQUEST THIS LOCATION</CTAButton>
-            <CTAButton className="w-full !px-8 sm:w-auto">REQUEST SPECIFICATIONS</CTAButton>
+            <a href={inquiryHref} className="cta-red w-full rounded-[4px] border border-brand-edge/50 px-4 py-2 text-center font-sans text-base font-medium text-white sm:w-auto">
+              REQUEST AVAILABILITY &amp; RATES
+            </a>
           </Reveal>
         </div>
       </section>
 
+      {location.mapEmbedUrl && (
+        <section className="bg-ink px-4 py-12 lg:px-14 lg:py-16">
+          <div className="mx-auto flex max-w-[1168px] flex-col gap-6">
+            <Reveal className="flex flex-col items-start gap-3">
+              <Eyebrow align="left">Find the location</Eyebrow>
+              <h2 className="font-display text-[28px] font-light leading-9 text-white lg:text-[40px] lg:leading-[48px]">
+                {location.name.toUpperCase()}, {location.district.toUpperCase()}.
+              </h2>
+            </Reveal>
+            <Reveal className="overflow-hidden rounded-xl border border-white/10">
+              <iframe
+                title={`Map showing ${location.name}`}
+                src={location.mapEmbedUrl}
+                className="h-[320px] w-full border-0 lg:h-[440px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </Reveal>
+            {location.mapUrl && (
+              <a
+                href={location.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline w-fit font-sans text-sm font-medium text-gold"
+              >
+                OPEN IN GOOGLE MAPS
+              </a>
+            )}
+          </div>
+        </section>
+      )}
+
+      <section className="bg-ink px-4 pb-12 lg:px-14 lg:pb-16">
+        <Reveal className="mx-auto flex max-w-[578px] flex-col gap-3 rounded-xl bg-[#0b0b0b] p-5 text-center lg:p-6">
+          <p className="font-sans text-sm font-medium tracking-[0.08em] text-white/75">
+            INTERESTED IN {location.name.toUpperCase()}?
+          </p>
+          <a
+            href={inquiryHref}
+            className="cta-red flex w-full items-center justify-center gap-2 rounded-[4px] border border-brand-edge/50 px-4 py-3 font-sans text-base font-semibold text-white lg:text-lg"
+          >
+            REQUEST AVAILABILITY &amp; RATES <span aria-hidden="true">↗</span>
+          </a>
+        </Reveal>
+      </section>
+
+      {location.audience && (
       <section className="bg-coal px-4 py-12 lg:px-14 lg:py-20">
         <div className="mx-auto flex max-w-[1168px] flex-col gap-9 lg:gap-12">
           <Reveal className="flex flex-col items-center gap-4 text-center">
@@ -210,7 +273,9 @@ export default async function LocationDetailPage({ params }) {
           </Reveal>
         </div>
       </section>
+      )}
 
+      {location.gallery?.length > 0 && (
       <section className="bg-ink px-4 py-12 lg:px-14 lg:py-20">
         <div className="mx-auto flex max-w-[1168px] flex-col gap-8 lg:gap-10">
           <Reveal className="flex flex-col items-start gap-3">
@@ -220,7 +285,7 @@ export default async function LocationDetailPage({ params }) {
             </h2>
           </Reveal>
           <StaggerGroup className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
-            {gallery.map((src, i) => (
+            {location.gallery.map((src, i) => (
               <StaggerItem key={src}>
                 <div className="h-[260px] overflow-hidden rounded-xl border border-white/10 bg-coal lg:h-[340px]">
                   <img
@@ -234,7 +299,9 @@ export default async function LocationDetailPage({ params }) {
           </StaggerGroup>
         </div>
       </section>
+      )}
 
+      {location.opportunities?.length > 0 && (
       <section className="rounded-t-[32px] bg-white px-4 py-12 lg:rounded-t-[40px] lg:px-14 lg:py-20">
         <div className="mx-auto flex max-w-[1168px] flex-col gap-8 lg:gap-12">
           <Reveal className="flex flex-col items-center gap-4 text-center">
@@ -252,11 +319,15 @@ export default async function LocationDetailPage({ params }) {
             ))}
           </StaggerGroup>
           <Reveal className="flex justify-center">
-            <CTAButton className="!px-8">REQUEST THIS LOCATION</CTAButton>
+            <a href={inquiryHref} className="cta-red rounded-[4px] border border-brand-edge/50 px-4 py-2 text-center font-sans text-base font-medium text-white">
+              REQUEST AVAILABILITY &amp; RATES
+            </a>
           </Reveal>
         </div>
       </section>
+      )}
 
+      {related.length > 0 && (
       <section className="bg-ink px-4 py-12 lg:px-14 lg:py-20">
         <div className="mx-auto flex max-w-[1168px] flex-col gap-8 lg:gap-10">
           <Reveal className="flex flex-col items-center gap-3 text-center">
@@ -265,6 +336,7 @@ export default async function LocationDetailPage({ params }) {
           <LocationGrid locations={related} />
         </div>
       </section>
+      )}
 
       <section className="bg-ivory px-4 py-12 lg:px-14 lg:py-16">
         <Reveal className="mx-auto grid max-w-[1168px] gap-6 border-y border-ink/15 py-7 sm:grid-cols-[1fr_auto] sm:items-center lg:gap-12 lg:py-9">

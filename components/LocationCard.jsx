@@ -45,11 +45,19 @@ function LocationCard({ location, imageFirst, showGroupBadge = true }) {
       {imageFirst ? (
         <>
           <div className="relative min-h-0 flex-[1.2] overflow-hidden">
-            <img
-              src={location.hero}
-              alt={location.name}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-            />
+            {location.hero ? (
+              <img
+                src={location.hero}
+                alt={location.name}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#282326] via-[#171515] to-[#090909]">
+                <span className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-white/55">
+                  Location photo coming soon
+                </span>
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
             <div className="absolute inset-x-0 top-0 p-4 lg:p-5">{badges}</div>
           </div>

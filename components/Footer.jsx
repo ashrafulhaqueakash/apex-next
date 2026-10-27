@@ -17,7 +17,7 @@ const FOOTER_GROUPS = [
       { label: "WHAT WE DO", to: "/what-we-do" },
       { label: "FOR ADVERTISERS", to: "/advertisers" },
       { label: "FOR PROPERTY PARTNERS", to: "/property-partners" },
-      // { label: "LOCATIONS", to: "/locations" },
+      { label: "LOCATIONS", to: "/locations" },
       { label: "ABOUT", to: "/about" },
     ],
   },

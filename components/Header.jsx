@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: "What we do", to: "/what-we-do" },
   { label: "For advertisers", to: "/advertisers" },
   { label: "For property partners", to: "/property-partners" },
-  // { label: "Locations", to: "/locations" },
+  { label: "Locations", to: "/locations" },
   { label: "About", to: "/about" },
 ];
 
