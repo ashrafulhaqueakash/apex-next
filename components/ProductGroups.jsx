@@ -17,7 +17,7 @@ const HOME_GROUP_CARDS = [
     id: "icon",
     name: "APEX ICON",
     cta: "DISCOVER ICON",
-    headline: "TURN CONSTRUCTION INTO ICONIC SHOWCASES.",
+    headline: "CONSTRUCTION TO BUILDINGS ITS AT THE PRODUCT GROUPS.",
     body: "ICON transforms existing buildings into temporary brand landmarks. Not advertising placed on architecture. Architecture transformed by the brand.",
     surfaces: ["Full building wraps", "Façade branding", "Architectural integration", "Spectaculars", "3D executions"],
     image: "/images/client-previews/icon-card.jpg",
