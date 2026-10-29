@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Badge";
 
 export function PageHero({ image, eyebrow, title, lead, children }) {
   return (
     <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-ink">
-      <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <Image src={image} alt="" fill preload sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-black/45" />
       <div
         className="absolute inset-0"

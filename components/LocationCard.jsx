@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { OutlineBadge, SolidBadge } from "@/components/ui/Badge";
 import { ArrowRightIcon } from "@/components/ui/Icons";
@@ -46,9 +47,11 @@ function LocationCard({ location, imageFirst, showGroupBadge = true }) {
         <>
           <div className="relative min-h-0 flex-[1.2] overflow-hidden">
             {location.hero ? (
-              <img
+              <Image
                 src={location.hero}
                 alt={location.name}
+                fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
               />
             ) : (
@@ -65,9 +68,11 @@ function LocationCard({ location, imageFirst, showGroupBadge = true }) {
         </>
       ) : (
         <>
-          <img
+          <Image
             src={location.hero}
             alt={location.name}
+            fill
+            sizes="(min-width: 1024px) 33vw, 100vw"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
           />
           <div

@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { Eyebrow, OutlineBadge, SolidBadge } from "@/components/ui/Badge";
 import { CheckIcon } from "@/components/ui/Icons";
 import { CTAButton } from "@/components/ui/Button";
 import { LocationSpecs } from "@/components/locations/LocationSpecs";
+import { MapEmbed } from "@/components/locations/MapEmbed";
 import { LocationGrid } from "@/components/LocationCard";
 import { ContactSection } from "@/components/ContactSection";
 import { locations, locationGroups, getLocationBySlug } from "@/lib/locations";
@@ -46,7 +48,14 @@ export default async function LocationDetailPage({ params }) {
     <div className="w-full">
       <section className="relative flex min-h-[100dvh] items-end overflow-hidden bg-ink">
         {location.hero ? (
-          <img src={location.hero} alt={location.name} className="absolute inset-0 h-full w-full object-cover" />
+          <Image
+            src={location.hero}
+            alt={location.name}
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover"
+          />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-[#282326] via-[#171515] to-[#090909]">
             <p className="absolute inset-x-4 bottom-1/3 text-center font-sans text-xs font-medium uppercase tracking-[0.2em] text-white/55">
@@ -176,15 +185,7 @@ export default async function LocationDetailPage({ params }) {
                 {location.name.toUpperCase()}, {location.district.toUpperCase()}.
               </h2>
             </Reveal>
-            <Reveal className="overflow-hidden rounded-xl border border-white/10">
-              <iframe
-                title={`Map showing ${location.name}`}
-                src={location.mapEmbedUrl}
-                className="h-[320px] w-full border-0 lg:h-[440px]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </Reveal>
+            <MapEmbed src={location.mapEmbedUrl} title={`Map showing ${location.name}`} />
             {location.mapUrl && (
               <a
                 href={location.mapUrl}
@@ -287,11 +288,13 @@ export default async function LocationDetailPage({ params }) {
           <StaggerGroup className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
             {location.gallery.map((src, i) => (
               <StaggerItem key={src}>
-                <div className="h-[260px] overflow-hidden rounded-xl border border-white/10 bg-coal lg:h-[340px]">
-                  <img
+                <div className="relative h-[260px] overflow-hidden rounded-xl border border-white/10 bg-coal lg:h-[340px]">
+                  <Image
                     src={src}
                     alt={`${location.name} — view ${i + 1}`}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04]"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04]"
                   />
                 </div>
               </StaggerItem>
